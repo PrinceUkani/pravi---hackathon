@@ -39,10 +39,15 @@ app.use(
   cors({
     origin: (origin, callback) => {
       // allow requests with no origin (like mobile apps, curl, or server-to-server)
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin) return callback(null, true);
+      // allow listed origins and any Vercel preview deployment
+      if (
+        allowedOrigins.includes(origin) ||
+        origin.endsWith('.vercel.app')
+      ) {
         return callback(null, true);
       }
-      return callback(null, true); // Permissive for local dev & testing
+      return callback(null, true); // Permissive for hackathon demo
     },
     credentials: true,
   })
