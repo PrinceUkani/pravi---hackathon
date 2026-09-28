@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-emerald-ink: #042716;
+    --color-champagne: #d4a347;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased font-sans selection:bg-emeraldInk-800 selection:text-champagne-300;
+  }
+
+  .dark body {
+    @apply bg-surface-dark text-slate-100;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-emeraldInk-900/60 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-emeraldInk-700/80;
+}
+
+/* Glass and subtle card effects */
+.glass-panel {
+  @apply bg-white/90 dark:bg-surface-darkCard/90 backdrop-blur-md border border-slate-200/80 dark:border-surface-darkBorder/80;
+}
+
+.champagne-border-hover:hover {
+  border-color: rgba(212, 163, 71, 0.4);
+}
